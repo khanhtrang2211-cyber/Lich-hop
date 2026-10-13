@@ -85,17 +85,43 @@ dialog{background:#111a2f;border:1px solid #25304f}
 .mini .when{font-size:12px}.mini .mm{font-size:12px;color:var(--mu);margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.mini .mm.hot{color:var(--wa);font-weight:700}
 .mini .tag{font-size:10px;padding:1px 7px}.mini .num{font-size:10px;margin:0;padding:2px 8px}.mini .top{align-items:center;flex-wrap:wrap}
 #dd{width:min(660px,95vw);padding:14px}#dd .card{margin:0}
+html:root:root{--bg:#0a1020;--card:#0f192e;--tx:#e6ecf8;--mu:#7f8ca8;--bd:#1b2a47;--pr:#3b82f6;--pr2:rgba(59,130,246,.14);--nv:#1d4ed8;--ac:#10b981;--ok:#10b981;--wa:#f59e0b;--er:#ef4444}
+body{background:#0a1020}
+header{background:#0c1426;border:1px solid #1b2a47;border-radius:14px;box-shadow:none}
+header h1{display:grid;grid-template-columns:auto 1fr;column-gap:12px;align-items:center;font-size:16px;letter-spacing:.4px;text-transform:uppercase}
+header h1::before{content:"LH";grid-row:1/3;display:grid;place-items:center;width:40px;height:40px;border-radius:11px;background:linear-gradient(135deg,#3b82f6,#06b6d4);color:#fff;font-size:14px;font-weight:800}
+header h1 small{grid-column:2;text-transform:none;color:#7f8ca8;font-size:12px}
+#sub::before{content:"\25CF  ";color:#10b981}
+header .tabs{background:#0a1020;border:1px solid #1b2a47}header .tabs button{color:#7f8ca8}header .tabs button.on{background:#3b82f6;color:#fff}
+.btn,header .btn{background:#101b32;border:1px solid #1f3053;color:#cdd8f0}.btn:hover{border-color:#3b82f6}
+.btn.p,header .btn.p{background:rgba(16,185,129,.12);border:1px solid #10b981;color:#34d399;font-weight:600}
+.btn.d{color:#f87171}
+.card,.stat{background:#0f192e;border:1px solid #1b2a47;box-shadow:none;border-radius:14px}
+.card.m{border-left-width:4px}.card.c-up{border-left-color:#3b82f6}.card.c-now,.card.soon{border-left-color:#f59e0b}.card.c-x{border-left-color:#ef4444}
+.stat{border-top:2px solid #3b82f6}.stat:nth-child(2){border-top-color:#10b981}.stat:nth-child(3){border-top-color:#38bdf8}.stat:nth-child(4){border-top-color:#ef4444}
+.stat span{text-transform:uppercase;font-size:11px;letter-spacing:.6px}
+.stat b{background:none;-webkit-background-clip:border-box;background-clip:border-box;color:#e6ecf8;font-size:34px;font-weight:800}.stat:nth-child(1) b{color:#3b82f6}
+.card>b:first-child{display:inline-block;font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:#cdd8f0;border-left:3px solid #3b82f6;padding-left:8px}
+.num{background:rgba(59,130,246,.15);color:#60a5fa;border:1px solid rgba(59,130,246,.35)}
+.t-up{background:rgba(59,130,246,.15);color:#60a5fa}.t-now{background:rgba(245,158,11,.16);color:#fbbf24}.t-done{background:rgba(16,185,129,.15);color:#34d399}.t-x{background:rgba(239,68,68,.16);color:#f87171}
+.prog i{background:#10b981}.meta span{background:#13213b}.meta .hot{background:#f59e0b;color:#1a1100}
+.al{background:rgba(245,158,11,.12);border:1px solid #f59e0b;color:#fbbf24;box-shadow:none}
+input,textarea,select{background:#0a1020;border-color:#1f3053;color:#e6ecf8}
+dialog,#dd,#lgd{background:#0f192e;border:1px solid #1b2a47}
+.chip input:checked+span,.dc.on{background:#3b82f6;border-color:#3b82f6;color:#fff}
+.cred div{background:#0a1020;border-color:#1b2a47}.cred b{color:#60a5fa}
+#toast{background:#10b981;color:#04130d}
 </style></head><body><div class="wrap">
 <header>
- <h1>📅 Lịch họp trực tuyến<small id="sub">Đang tải dữ liệu…</small></h1>
+ <h1>Lịch họp trực tuyến<small id="sub">Đang tải dữ liệu…</small></h1>
  <div style="display:flex;gap:8px;flex-wrap:wrap">
   <div class="tabs"><button id="tL" class="on">Cuộc họp</button><button id="tR">Báo cáo</button></div>
-  <button class="btn" id="imp" hidden>📥 Mở data.json</button><button class="btn p" id="exp" hidden>💾 Xuất gói cập nhật</button><input type="file" id="impf" accept=".json" hidden><button class="btn p" id="addp" hidden>📋 Dán thông báo</button><button class="btn" id="add" hidden>＋ Thêm</button>
+  <button class="btn" id="lg">🔑 Quản trị</button><button class="btn p" id="addp" hidden>📋 Dán thông báo</button><button class="btn" id="add" hidden>＋ Thêm</button>
  </div>
 </header>
 
 <div id="alert"></div>
-<div id="adm" class="al" hidden style="animation:none;background:linear-gradient(90deg,#4f46e5,#0891b2)"></div>
+<div id="adm" class="al" hidden style="animation:none;background:rgba(59,130,246,.12);border:1px solid #3b82f6;color:#93c5fd;box-shadow:none"></div>
 <section id="vL">
  <div class="bar"><input id="q" placeholder="🔍 Tìm theo tên, nội dung, ID…"><select id="f"><option value="up">Sắp tới</option><option value="all">Tất cả</option><option value="past">Đã họp</option></select></div>
  <div id="list"></div>
@@ -113,6 +139,7 @@ dialog{background:#111a2f;border:1px solid #25304f}
 </div>
 
 <dialog id="dd"></dialog>
+<dialog id="lgd" style="width:min(420px,94vw)"><b style="font-size:16px">🔑 Đăng nhập quản trị</b><label>Mã token GitHub (do admin tạo)</label><input id="lgc" type="password" autocomplete="off"><label>Kho GitHub</label><input id="lgr" placeholder="tên-tài-khoản/Lich-hop"><div class="note">Token chỉ lưu trên máy này. Người xem bình thường không cần đăng nhập.</div><div class="acts" style="margin-top:14px;justify-content:flex-end"><button class="btn" id="lgx">Hủy</button><button class="btn p" id="lgo">Đăng nhập</button></div></dialog>
 <dialog id="dlg"><div id="dh" style="font-weight:700;font-size:17px;margin-bottom:4px">Cuộc họp</div>
  <div id="pz" style="background:var(--pr2);border-radius:12px;padding:10px;margin-top:6px"><label style="margin-top:0;color:var(--pr);font-weight:600">📋 Dán nội dung thông báo họp để tự động lọc</label><textarea id="pt" rows="5" placeholder="Dán nguyên văn thư mời họp (có link, Meeting ID, Passcode, thời gian…)"></textarea><button class="btn p" id="pa" style="margin-top:6px">✨ Tự động lọc thông tin</button><div class="note" id="pn"></div></div>
  <label>Tên cuộc họp *</label><input id="fn">
@@ -130,7 +157,6 @@ dialog{background:#111a2f;border:1px solid #25304f}
 <div id="toast"></div>
 
 <script>
-const ADMIN=false;
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const D=["CN","T2","T3","T4","T5","T6","T7"];
@@ -241,26 +267,27 @@ $("sv").onclick=async()=>{const name=$("fn").value.trim(),w=$("fd").value;if(!na
 $("del").onclick=async()=>{if(!cur||!confirm("Xóa cuộc họp này?"))return;try{await rm(cur.id);$("dlg").close();toast("Đã xóa")}catch(e){toast("Không xóa được")}};
 
 renderList();
-const KEY="lh_data";let dirty=false;
-function persist(){try{localStorage.setItem(KEY,JSON.stringify(items))}catch(e){toast("Không lưu được trên trình duyệt")}dirty=true;adm();renderList();if(!$("vR").hidden)renderRep()}
-function adm(){const b=$("adm");b.hidden=!ADMIN;if(ADMIN)b.innerHTML="🛠 <b>Chế độ quản trị</b> — dữ liệu đang lưu trên máy này. "+(dirty?"<b>⚠️ Có thay đổi chưa xuất:</b> bấm “Xuất gói cập nhật” rồi tải lên nơi đăng web.":"Sau khi sửa, bấm “Xuất gói cập nhật” rồi tải lên nơi đăng web.")}
-async function sv(m){const i=items.findIndex(x=>x.id===m.id);if(i<0)items.push(m);else items[i]=m;persist()}
-async function pt(i,p){const m=items.find(x=>x.id===i);if(m){Object.assign(m,p);persist()}}
-async function rm(i){items=items.filter(x=>x.id!==i);persist()}
-async function fetchData(){const r=await fetch("data.json?t="+Date.now(),{cache:"no-store"});if(!r.ok)throw 0;const j=await r.json();return j.meetings||[]}
-async function load(){try{items=await fetchData();renderList();if(!$("vR").hidden)renderRep()}catch(e){if(!items.length)$("sub").textContent="Không tải được dữ liệu (trang cần được đăng lên web)"}}
-const idb=()=>new Promise((res,rej)=>{const r=indexedDB.open("lh_files",1);r.onupgradeneeded=()=>r.result.createObjectStore("f");r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)});
-async function putF(k,b){const d=await idb();return new Promise((res,rej)=>{const t=d.transaction("f","readwrite");t.objectStore("f").put(b,k);t.oncomplete=res;t.onerror=()=>rej(t.error)})}
-async function getF(k){const d=await idb();return new Promise((res,rej)=>{const q=d.transaction("f").objectStore("f").get(k);q.onsuccess=()=>res(q.result);q.onerror=()=>rej(q.error)})}
-function upFile(f){const safe=Date.now()+"_"+f.name.replace(/[^\w.\-]+/g,"_");return putF(safe,f).then(()=>({id:safe,url:"files/"+safe}))}
-function dl(blob,name){const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000)}
-$("exp").onclick=async()=>{const json=JSON.stringify({meetings:items,updated:new Date().toISOString()},null,1);
- if(!window.JSZip){dl(new Blob([json],{type:"application/json"}),"data.json");dirty=false;adm();toast("Đã tải data.json (không nén được tệp đính kèm)");return}
- const z=new JSZip();z.file("data.json",json);const used=new Set();
- for(const m of items)for(const f of m.files||[])if(f.id&&!used.has(f.id)){used.add(f.id);try{const b=await getF(f.id);if(b)z.folder("files").file(f.id,b)}catch(e){}}
- dl(await z.generateAsync({type:"blob"}),"lich-hop-cap-nhat.zip");dirty=false;adm();toast("Đã xuất gói cập nhật")};
-$("imp").onclick=()=>$("impf").click();
-$("impf").onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const j=JSON.parse(await f.text());items=j.meetings||[];persist();dirty=false;adm();toast("Đã mở data.json")}catch(x){toast("File không hợp lệ")}e.target.value=""};
-(async()=>{if(ADMIN){["add","addp","imp","exp"].forEach(k=>$(k).hidden=false);canW=true;assets=true;let loc=null;try{loc=JSON.parse(localStorage.getItem(KEY)||"null")}catch(e){}if(loc){items=loc}else{try{items=await fetchData()}catch(e){items=[]}}adm();renderList()}else{await load();setInterval(load,60000)}})();
+const GH={o:"",r:"",b:"main",tok:""};
+(function(){const h=location.hostname,p=location.pathname.split("/").filter(Boolean);if(h.endsWith(".github.io")){GH.o=h.split(".")[0];GH.r=p[0]||""}try{const sv=localStorage.getItem("lh_repo");if(sv&&!GH.r){const a=sv.split("/");GH.o=a[0];GH.r=a[1]}GH.tok=localStorage.getItem("lh_tok")||""}catch(e){}})();
+const api=(path,opt={})=>fetch("https://api.github.com/repos/"+GH.o+"/"+GH.r+path,Object.assign({},opt,{headers:{"Accept":"application/vnd.github+json","Authorization":"Bearer "+GH.tok}}));
+const b64=s=>btoa(unescape(encodeURIComponent(s)));
+const unb64=s=>decodeURIComponent(escape(atob(s.replace(/\n/g,""))));
+async function ghGet(){const r=await api("/contents/data.json?ref="+GH.b+"&t="+Date.now());if(r.status===404)return{list:[],sha:null};if(!r.ok)throw new Error(r.status);const j=await r.json();let list=[];try{list=JSON.parse(unb64(j.content)).meetings||[]}catch(e){}return{list,sha:j.sha}}
+async function ghPut(list,sha){const body={message:"Cập nhật lịch họp",content:b64(JSON.stringify({meetings:list,updated:new Date().toISOString()},null,1)),branch:GH.b};if(sha)body.sha=sha;const r=await api("/contents/data.json",{method:"PUT",body:JSON.stringify(body)});if(!r.ok)throw new Error(r.status)}
+async function mutate(fn){toast("Đang lưu lên GitHub…");try{const g=await ghGet();fn(g.list);await ghPut(g.list,g.sha);items=g.list;renderList();if(!$("vR").hidden)renderRep();toast("Đã lưu — nhóm thấy sau khoảng 1–2 phút")}catch(e){toast(e.message==="401"||e.message==="403"?"Token không có quyền ghi vào kho":"Lưu thất bại ("+e.message+")");throw e}}
+async function sv(m){await mutate(l=>{const i=l.findIndex(x=>x.id===m.id);if(i<0)l.push(m);else l[i]=m})}
+async function pt(i,p){await mutate(l=>{const m=l.find(x=>x.id===i);if(m)Object.assign(m,p)})}
+async function rm(i){await mutate(l=>{const k=l.findIndex(x=>x.id===i);if(k>=0)l.splice(k,1)})}
+function upFile(f){return new Promise((res,rej)=>{if(f.size>10*1024*1024){rej({code:"quá 10MB"});return}const safe=Date.now()+"_"+f.name.replace(/[^\w.\-]+/g,"_"),r=new FileReader();r.onload=async()=>{try{const x=await api("/contents/files/"+safe,{method:"PUT",body:JSON.stringify({message:"Tải công văn",content:String(r.result).split(",")[1],branch:GH.b})});if(!x.ok)throw new Error(x.status);res({id:safe,url:"files/"+safe})}catch(e){rej({code:e.message})}};r.onerror=rej;r.readAsDataURL(f)})}
+async function fetchPub(){const r=await fetch("data.json?t="+Date.now(),{cache:"no-store"});if(!r.ok)throw 0;return(await r.json()).meetings||[]}
+async function load(){try{items=canW?(await ghGet()).list:await fetchPub();renderList();if(!$("vR").hidden)renderRep()}catch(e){if(!items.length)$("sub").textContent="Không tải được dữ liệu"}}
+function adm(){const b=$("adm");b.hidden=!canW;if(canW)b.innerHTML="🛠 <b>Chế độ quản trị</b> — mọi thay đổi tự lưu lên GitHub, nhóm thấy sau khoảng 1–2 phút."}
+function setAdmin(on,n){canW=on;assets=on;$("add").hidden=!on;$("addp").hidden=!on;$("lg").textContent=on?"👤 "+n+" · Thoát":"🔑 Quản trị";adm();renderList()}
+async function login(tok,quiet){GH.tok=tok;try{if(!GH.o||!GH.r)throw 0;const g=await ghGet();let n="Admin";try{n=(await(await fetch("https://api.github.com/user",{headers:{Authorization:"Bearer "+tok}})).json()).login||n}catch(e){}items=g.list;try{localStorage.setItem("lh_tok",tok);localStorage.setItem("lh_repo",GH.o+"/"+GH.r)}catch(e){}setAdmin(true,n);return true}catch(e){GH.tok="";if(!quiet)toast("Token không đúng hoặc không có quyền với kho này");return false}}
+$("lg").onclick=()=>{if(canW){GH.tok="";try{localStorage.removeItem("lh_tok")}catch(e){}setAdmin(false);load();return}$("lgc").value="";$("lgr").value=GH.o&&GH.r?GH.o+"/"+GH.r:"";$("lgd").showModal();$("lgc").focus()};
+$("lgx").onclick=()=>$("lgd").close();
+$("lgo").onclick=async()=>{const c=$("lgc").value.trim(),rp=$("lgr").value.trim().split("/");if(!c)return;if(rp.length===2&&rp[0]&&rp[1]){GH.o=rp[0];GH.r=rp[1]}if(await login(c))$("lgd").close()};
+$("lgc").addEventListener("keydown",e=>{if(e.key==="Enter")$("lgo").click()});
+(async()=>{await load();if(GH.tok)await login(GH.tok,true);setInterval(load,60000)})();
 setInterval(()=>{renderList();if(!$("vR").hidden)renderRep()},30000);
 </script></body></html>
