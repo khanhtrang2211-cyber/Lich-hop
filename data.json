@@ -4,7 +4,7 @@
    "id": "m1791864247991",
    "name": "Họp triển khai xây dựng Ứng dụng theo dõi, đánh giá công chức Cục Thuế",
    "desc": "Điểm cầu họp trực tuyến Thuế Cơ sở Thuế Tỉnh, Thành Phố.\nThời gian test và trực hệ thống họp trực tuyến: 13h00 ngày 13/10/2026",
-   "when": "2026-10-13T06:00:00.000Z",
+   "when": "2026-10-13T07:00:00.000Z",
    "status": "ok",
    "mid": "995 3886 0814",
    "pass": "8888",
@@ -15,8 +15,8 @@
    "duty": [
     "Đỗ Khánh Hoà"
    ],
-   "moved": "",
-   "updated": "2026-10-13T04:04:07.991Z",
+   "moved": "2026-10-13T06:00:00.000Z",
+   "updated": "2026-10-13T04:04:28.022Z",
    "files": [
     {
      "id": "1791864244540_7361_cong_van.pdf",
@@ -26,5 +26,5 @@
    ]
   }
  ],
- "updated": "2026-10-13T04:04:08.623Z"
+ "updated": "2026-10-13T04:04:29.023Z"
 }
