@@ -29,7 +29,7 @@
    "id": "m1791864341354",
    "name": "Gửi anh chị thông tin Họp triển khai Diễn đàn pháp luật và nghiệp vụ quản lý thuế",
    "desc": "Gửi anh chị thông tin Họp triển khai Diễn đàn pháp luật và nghiệp vụ quản lý thuế\nCuộc họp trực tuyến chỉ dành cho Thuế Tỉnh, Thành Phố (Thuế Cơ sở không tham dự)\nThời gian test và trực hệ thống họp trực tuyến: 8h30 ngày 13/10/2026",
-   "when": "2026-10-13T01:30:00.000Z",
+   "when": "2026-10-13T07:00:00.000Z",
    "status": "ok",
    "mid": "328 572 9519",
    "pass": "CT@2026",
@@ -40,8 +40,8 @@
    "duty": [
     "Nguyễn Nguyên Khoái"
    ],
-   "moved": "",
-   "updated": "2026-10-13T04:05:54.698Z",
+   "moved": "2026-10-13T01:30:00.000Z",
+   "updated": "2026-10-13T04:06:17.139Z",
    "files": [
     {
      "id": "1791864336165_CV_7508.pdf",
@@ -51,5 +51,5 @@
    ]
   }
  ],
- "updated": "2026-10-13T04:05:55.331Z"
+ "updated": "2026-10-13T04:06:17.802Z"
 }
