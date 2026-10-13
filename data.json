@@ -1,1 +1,30 @@
-{"meetings":[]}
+{
+ "meetings": [
+  {
+   "id": "m1791864247991",
+   "name": "Họp triển khai xây dựng Ứng dụng theo dõi, đánh giá công chức Cục Thuế",
+   "desc": "Điểm cầu họp trực tuyến Thuế Cơ sở Thuế Tỉnh, Thành Phố.\nThời gian test và trực hệ thống họp trực tuyến: 13h00 ngày 13/10/2026",
+   "when": "2026-10-13T06:00:00.000Z",
+   "status": "ok",
+   "mid": "995 3886 0814",
+   "pass": "8888",
+   "link": "https://zoom.us/j/99538860814?pwd=O8ZCuBl8e3bHpgFY0lO999kJRaOQOd.1",
+   "test": "2026-10-13T06:00:00.000Z",
+   "loc": "Phòng họp số 1",
+   "room": "",
+   "duty": [
+    "Đỗ Khánh Hoà"
+   ],
+   "moved": "",
+   "updated": "2026-10-13T04:04:07.991Z",
+   "files": [
+    {
+     "id": "1791864244540_7361_cong_van.pdf",
+     "name": "7361 cong van.pdf",
+     "url": "files/1791864244540_7361_cong_van.pdf"
+    }
+   ]
+  }
+ ],
+ "updated": "2026-10-13T04:04:08.623Z"
+}
